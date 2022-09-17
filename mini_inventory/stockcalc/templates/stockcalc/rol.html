@@ -1,0 +1,29 @@
+{% extends "maincontrol/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Stock Reorder Level
+{% endblock %}
+
+
+{% block body %}
+
+ {% if messages %}
+    {% for message in messages %}
+        <h4 class='text-success'>Answer: {{ message }}</h4>
+    {% endfor %}
+{% endif %}
+
+<section>
+    <form method='POST' action="">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+        <input type="submit" value='Stock Reorder Level' class='btn btn-lg bg-success text-white'>
+        <br>
+    </form>
+</section>
+<br>
+
+{% endblock %}

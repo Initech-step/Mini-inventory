@@ -1,0 +1,27 @@
+{% extends "maincontrol/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Choose your actively managed inventory
+{% endblock %}
+
+
+
+{% block body %}
+
+{% if messages %}
+    {% for message in messages %}
+        <h4 class='{{ message.tags }}'>{{ message }}</h4>
+    {% endfor %}
+{% endif %}
+
+<div class="text-center">
+    {% for inventory in inventories %}
+        <div class='col-12 col-lg-6 col-md-6 mt-3'>
+            <a href="{% url 'currently_managing_b' inventory.id %}" class='btn btn-md bg-success text-white'>{{ inventory.name }}</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
+

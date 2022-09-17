@@ -1,0 +1,29 @@
+{% extends "maincontrol/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Recieve Inventory
+{% endblock %}
+
+
+{% block body %}
+
+{% if messages %}
+    {% for message in messages %}
+        <h4 class='{{ message.tags }}'>{{ message }}</h4>
+    {% endfor %}
+{% endif %}
+
+
+<section>
+    <form method='POST' action="">
+        <p class='text-danger fw-bold' style="font-weight: bold;">Currently managed stock: {{ current.name }}</p>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+        <input type="submit" value='Recieve Inventory' class='btn btn-lg bg-success text-white'>
+        <br>
+    </form>
+</section>
+{% endblock %}
